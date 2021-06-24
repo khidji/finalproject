@@ -1,5 +1,4 @@
 # finalproject
 Projet de fin de formation
 
-
-Site de e commerce
+Connexion - Inscription - Deconnexion fonctionnel -> changement dans le CSS à faire

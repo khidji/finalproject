@@ -1,0 +1,52 @@
+@import './reset';
+@import './variables';
+@import './fonts';
+
+body {
+  font-family: $font-family;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: 6.5rem auto 5rem;
+  grid-template-areas: 'header' 'main' 'footer';
+}
+
+header {
+  @include flex(center, space-between);
+  grid-area: header;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: #294345;
+  color: #fff;
+  padding: 2rem 4rem;
+
+  div {
+    width: 8rem;
+
+    a {
+      display: block;
+    }
+
+    img {
+      max-width: 100%;
+    }
+  }
+
+  nav {
+    ul {
+      @include flex(center, center);
+      gap: 1rem;
+    }
+  }
+}
+
+main {
+  padding: 4rem;
+  grid-area: main;
+}
+
+footer {
+  @include flex(center, center);
+  grid-area: footer;
+}

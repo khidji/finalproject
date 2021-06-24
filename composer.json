@@ -1,0 +1,17 @@
+{
+    "name": "khidji/finalproject",
+    "require": {
+        "vlucas/phpdotenv": "^5.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Khidji\\Finalproject\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "khidji",
+            "email": "dupirelucie@gmail.com"
+        }
+    ]
+}

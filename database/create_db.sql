@@ -25,7 +25,7 @@ CREATE TABLE `posts` (
     `content` TEXT NOT NULL,
 	`image_url` TEXT,
 	`title` TEXT NOT NULL,
-	`user_id` INTEGER NOT NULL REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+	`user` VARCHAR(60) NOT NULL REFERENCES `users`(`pseudo`) ON DELETE CASCADE ON UPDATE CASCADE,
 	`created_at` DATETIME DEFAULT NOW(),
 	`updated_at` DATETIME
 );
@@ -40,7 +40,7 @@ CREATE TABLE `categories` (
 CREATE TABLE `comments` (
 	`id` INTEGER AUTO_INCREMENT PRIMARY KEY,
     `content` TEXT NOT NULL,
-	`user_id` INTEGER NOT NULL REFERENCES `users`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+	`user` VARCHAR(60) NOT NULL REFERENCES `users`(`pseudo`) ON DELETE CASCADE ON UPDATE CASCADE,
 	`created_at` DATETIME DEFAULT NOW(),
 	`updated_at` DATETIME
 );
@@ -83,7 +83,7 @@ VALUES ('vehicules'),
 INSERT INTO `posts` (
     `content`, 
     `title`,
-    `user_id`
+    `user`
     )
 
 VALUES ('blablacontenu', 'testTITRE', '125');

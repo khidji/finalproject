@@ -15,10 +15,6 @@ if (!isset($_SESSION['user'])) {
 
 $user = $_SESSION['user'];
 
-$articles = $pdo->query('SELECT * FROM posts ORDER BY id DESC');
-
-
-
 ?>
 
 <!DOCTYPE html>
@@ -28,7 +24,7 @@ $articles = $pdo->query('SELECT * FROM posts ORDER BY id DESC');
 		<meta charset="UTF-8">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Final project</title>
+		<title>Final project - categories</title>
 
 		<link rel="stylesheet" href="assets/css/style.css">
 		<link rel="stylesheet" href="assets/css/home.css">
@@ -52,17 +48,10 @@ $articles = $pdo->query('SELECT * FROM posts ORDER BY id DESC');
 			</nav>
 		</header>
 		<main>
-			<h1 class="welcome">Bienvenue
-				<?=$user['pseudo'];?>
-			</h1>
-      		<p class="p_home">T'as besoin d'aide ? Alors <a class="a_newpost" href="newpost.php"> crée une demande d'aide</a> ! </p>
-			<h2 class="h2_home">Dernières publications:</h2>
-			<ul>
-				<?php while ($a = $articles->fetch()) { ?>
-				<li class ="lien_article"> <a href="article.php?id=<?= $a['id'] ?>"> <?= $a['title']?> </a> </li>
-				<?php } ?>
-			</ul>
 
+
+
+        
 		</main>
 		<footer>&copy; J'ai besoin d'aide 2021</footer>
 	</body>

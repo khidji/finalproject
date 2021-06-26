@@ -1,5 +1,8 @@
 <?php
 
+// CODE DE DAVID DRAGON POUR LE TP AUTHENTIFICATION
+
+
 function validateForm(array $post, $isLoggingIn = false): array{
   // ce tableau servira a stocker nos potentielles erreurs
   $errors = [];

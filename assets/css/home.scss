@@ -1,0 +1,30 @@
+@import './variables';
+@import './fonts';
+
+.welcome {
+    text-align: center;
+    font-size: 3rem;
+    margin: 1rem;
+    color: $maincolor;
+}
+
+.h2_home {
+    text-align: center;
+    font-size: 2rem;
+    margin: 1rem;
+    color: $maincolor;
+}
+
+.lien_article {
+    color: $maincolor;
+    padding: 1rem;
+}
+
+.p_home {
+    padding: .5rem;
+}
+
+.a_newpost {
+    background-color:$maincolor;
+    color: $white;
+}

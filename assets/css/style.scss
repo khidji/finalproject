@@ -17,8 +17,8 @@ header {
   top: 0;
   left: 0;
   right: 0;
-  background-color: #294345;
-  color: #fff;
+  background-color: $maincolor;
+  color: $white;
   padding: 2rem 4rem;
 
   div {
@@ -44,6 +44,7 @@ header {
 main {
   padding: 4rem;
   grid-area: main;
+
 }
 
 footer {

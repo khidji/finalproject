@@ -16,6 +16,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 	  'pseudo' => $pseudo,
       'first_name' => $firstName,
       'last_name' => $lastName,
+	  'phone' => $phone,
+	  'address' => $address,
+	  'city' => $city,
+	  'country' => $country,
+	  'postal_code' => $postalCode,
       'email' => $email,
       'password' => $password,
       'confirm_password' => $confirmPassword,
@@ -87,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		<title>finalproject | Inscription</title>
 
 		<link rel="stylesheet" href="assets/css/style.css">
-		<link rel="stylesheet" href="assets/css/auth/auth.css">
+		<link rel="stylesheet" href="assets/css/auth/signup.css">
 		<script src="assets/js/auth.js" defer></script>
 	</head>
 

@@ -2,6 +2,13 @@
 @import './variables';
 @import './fonts';
 
+.logo {
+  max-height: 4rem;
+  img {
+    max-height: 5rem;
+  }
+}
+
 body {
   font-family: $font-family;
   min-height: 100vh;
@@ -10,7 +17,7 @@ body {
   grid-template-areas: 'header' 'main' 'footer';
 }
 
-header {
+header { 
   @include flex(center, space-between);
   grid-area: header;
   position: fixed;
@@ -51,3 +58,10 @@ footer {
   @include flex(center, center);
   grid-area: footer;
 }
+
+
+@import 'auth/auth.scss';
+@import 'auth/signup.scss';
+
+@import 'home/home.scss';
+@import 'newpost/newpost.scss';

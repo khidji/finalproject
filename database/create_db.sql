@@ -26,6 +26,7 @@ CREATE TABLE `posts` (
 	`image_url` TEXT,
 	`title` TEXT NOT NULL,
 	`user` VARCHAR(60) NOT NULL REFERENCES `users`(`pseudo`) ON DELETE CASCADE ON UPDATE CASCADE,
+	`category` VARCHAR(150) NOT NULL,
 	`created_at` DATETIME DEFAULT NOW(),
 	`updated_at` DATETIME
 );
@@ -73,17 +74,17 @@ VALUES ('testeur',
 	);
 
 INSERT INTO `categories` (`name`)
-VALUES ('vehicules'),
-	('immobilier'),
-	('travaux'),
-	('orientation'),
-    ('taxes'),
-	('aides');
+VALUES ('HTML'),
+	('CSS'),
+	('JAVASCRIPT'),
+	('PHP'),
+    ('AUTRES');
 
 INSERT INTO `posts` (
     `content`, 
     `title`,
-    `user`
+    `user`,
+	`category`
     )
 
-VALUES ('blablacontenu', 'testTITRE', '125');
+VALUES ('blablacontenu', 'testTITRE', '125', 'HTML');

@@ -6,15 +6,14 @@
     <title>Final project</title>
 
     <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/home.css">
 
 </head>
 
 <body>
     <header>
         <div>
-            <a href="/">
-                <img src="../assets/images/logo/logo.svg" alt="">
+            <a class="logo" href="/">
+                <img src="../assets/images/logo/logo.png" alt="">
             </a>
         </div>
         <nav>

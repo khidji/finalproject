@@ -18,31 +18,8 @@ $user = $_SESSION['user'];
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
-		<meta charset="UTF-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1.0">
-		<title>Profil</title>
+<?php include ('template/header.php'); ?>
 
-		<link rel="stylesheet" href="assets/css/style.css">
-	</head>
-
-	<body>
-		<header>
-			<div>
-				<a href="/">
-					<img src="../assets/images/logo/logo.svg" alt="">
-				</a>
-			</div>
-			<nav>
-				<ul>
-					<li><a href="/">Accueil</a></li>
-					<li><a href="categories.php">Toutes les catégories</a></li>
-					<li><a href="profile.php">Mon compte</a></li>
-					<li><a href="logout.php">se déconnecter</a></li>
-				</ul>
-			</nav>
-		</header>
 		<main>
 			<h1>Bienvenue
 				<?=$user['first_name'];?>
@@ -61,7 +38,9 @@ $user = $_SESSION['user'];
 			</a>
 			<p>Voici les articles que tu as posté :   insérer articles</p>
 		</main>
-		<footer>&copy; J'ai besoin d'aide 2021</footer>
+
+<?php include ('template/footer.php'); ?>
+
 	</body>
 
 </html>

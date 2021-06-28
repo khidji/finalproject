@@ -14,16 +14,10 @@ $user = $_SESSION['user'];
 
 if(isset($_GET['id']) && !empty($_GET['id'])){
     $get_id = htmlentities($_GET['id']);
-    $article = $pdo->prepare('SELECT * FROM posts WHERE id = ?');
-    $article->execute(array($get_id));
-
-    if($article->rowCount() == 1) {
-        $article = $article->fetch();
-        $title = $article['title'];
-        $content = $article['content'];
-    } else {
-        die ('Cet article n\'existe pas !');
-    }
+    $articles = $pdo->prepare('SELECT * FROM posts WHERE category_id = ?');
+    $articles->execute(array($get_id));
+    $article = $articles->fetch();
+    $title = $article['title'];
 
 } else {
     header("Location: index.php");
@@ -38,8 +32,16 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 <?php include ('template/header.php'); ?>
 
 <main>
-    <h1><?= $title ?></h1>
-    <p><?= $content ?></p>
+
+
+    <ul>
+        <?php while ($a = $articles->fetch()) { ?>
+        <li class ="lien_article"> <a href="article.php?id=<?= $a['id'] ?>"> <?= $a['title']?> </a> </li>
+        <?php } ?>
+    </ul>
+
+
+
 </main>
 
 <?php include ('template/footer.php'); ?>

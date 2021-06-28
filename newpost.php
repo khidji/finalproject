@@ -14,12 +14,13 @@ $user = $_SESSION['user'];
 
 
 if (isset ($_POST['article_title'], $_POST['article_content'])) {
-    if (!empty($_POST['article_title']) && !empty($_POST['article_content'])){
+    if (!empty($_POST['article_title']) && !empty($_POST['article_content']) && !empty($_POST['categories'])){
 
         $article_title = htmlentities($_POST['article_title']);
         $article_content = htmlentities($_POST['article_content']);
-        $publication = $pdo->prepare('INSERT INTO posts (content, title, user) VALUES (?,?,?)');
-        $publication->execute(array($article_content, $article_title, $user));
+        $article_category = htmlentities($_POST['categories']);
+        $publication = $pdo->prepare('INSERT INTO posts (content, title, user, category_id) VALUES (?,?,?,?)');
+        $publication->execute(array($article_content, $article_title, $user, $article_category));
         $error_article = 'votre article a bien été posté';
     } else {
         $error_article = 'veuillez remplir tous les champs';
@@ -32,32 +33,10 @@ if (isset ($_POST['article_title'], $_POST['article_content'])) {
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nouveau post</title>
-    <link rel="stylesheet" href="assets/css/style.css">
-    <link rel="stylesheet" href="assets/css/newpost.css">
-</head>
-<body>
 
-    <header>
-			<div>
-				<a href="/">
-					<img src="../assets/images/logo/logo.svg" alt="">
-				</a>
-			</div>
-			<nav>
-				<ul>
-					<li><a href="/">Accueil</a></li>
-					<li><a href="categories.php">Toutes les catégories</a></li>
-					<li><a href="profile.php">Mon compte</a></li>
-					<li><a href="logout.php">se déconnecter</a></li>
-				</ul>
-			</nav>
-	</header>
-<main>
+<?php include ('template/header.php'); ?>
+
+<main class="newpost_main">
     <div class="newpost_container">
         <form class="newpost_form" method="POST">
             <input type="text" name="article_title" placeholder= "Titre">
@@ -65,11 +44,11 @@ if (isset ($_POST['article_title'], $_POST['article_content'])) {
             <input type="file">
             <label for="categories">Choisi une catégorie</label>
             <select id="categories" name="categories">
-                <option value="HTML">HTML</option>
-                <option value="CSS">CSS</option>
-                <option value="JavaScript">JavaScript</option>
-                <option value="PHP">PHP</option>
-                <option value="Autre">Autre</option>
+                <option value="1">HTML</option>
+                <option value="2">CSS</option>
+                <option value="3">JavaScript</option>
+                <option value="4">PHP</option>
+                <option value="5">Autre</option>
             </select>
             <input class="button" type="submit" value="envoyer l'article">
         </form>
@@ -82,6 +61,6 @@ if (isset ($_POST['article_title'], $_POST['article_content'])) {
 <br>
 <?php if(isset($error_article)) {echo $error_article;} ?>
 
-    
-</body>
+<?php include ('template/footer.php'); ?>
+
 </html>

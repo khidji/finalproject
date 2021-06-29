@@ -20,7 +20,7 @@ if (isset ($_POST['article_title'], $_POST['article_content'])) {
         $article_content = htmlentities($_POST['article_content']);
         $article_category = htmlentities($_POST['categories']);
         $publication = $pdo->prepare('INSERT INTO posts (content, title, user, category_id) VALUES (?,?,?,?)');
-        $publication->execute(array($article_content, $article_title, $user, $article_category));
+        $publication->execute(array($article_content, $article_title, $user['pseudo'], $article_category));
         $error_article = 'votre article a bien été posté';
     } else {
         $error_article = 'veuillez remplir tous les champs';

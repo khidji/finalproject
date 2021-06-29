@@ -4,6 +4,8 @@ session_start();
 
 // on vient inclure l'autoload de composer pour avoir accès au chargement automatiques des class (perso/externe)
 require_once __DIR__ . '/vendor/autoload.php';
+require_once __DIR__ . '/database/index.php';
+
 
 
 // si l'utilisateur n'est pas connecté on le renvoie vers le login
@@ -12,6 +14,18 @@ if (!isset($_SESSION['user'])) {
 }
 
 $user = $_SESSION['user'];
+
+
+$get_pseudo = htmlentities($user['pseudo']);
+$user_post = $pdo->prepare('SELECT * FROM posts WHERE user = ?');
+$user_post->execute(array($get_pseudo));
+
+if($user_post->rowCount() != 0) {
+	$user_post = $user_post->fetch();
+	$title = $user_post['title'];
+	$content = $user_post['content'];
+} 
+
 
 ?>
 
@@ -37,6 +51,8 @@ $user = $_SESSION['user'];
 			<button > Créer un post</button>
 			</a>
 			<p>Voici les articles que tu as posté :   insérer articles</p>
+			<h1><?= $title ?></h1>
+			<p><?= $content ?></p>
 		</main>
 
 <?php include ('template/footer.php'); ?>

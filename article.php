@@ -21,6 +21,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
         $article = $article->fetch();
         $title = $article['title'];
         $content = $article['content'];
+        $image = $article['image_url'];
     } else {
         die ('Cet article n\'existe pas !');
     }
@@ -40,6 +41,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 <main>
     <h1><?= $title ?></h1>
     <p><?= $content ?></p>
+    <img src="<?php echo $image; ?>">
 </main>
 
 <?php include ('template/footer.php'); ?>

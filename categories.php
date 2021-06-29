@@ -15,8 +15,9 @@ if (!isset($_SESSION['user'])) {
 
 $user = $_SESSION['user'];
 
-$selection = $pdo->query('SELECT p.id, p.content, p.title, c.id, c.name FROM posts AS p JOIN categories AS c ON p.category_id=c.id;');
-$c = $selection->fetchAll();
+$selection = $pdo->query('SELECT id, name FROM categories;');
+$selection->execute();
+$selection = $selection->fetchAll(PDO::FETCH_OBJ);
 
 ?>
 
@@ -27,8 +28,8 @@ $c = $selection->fetchAll();
 <main>
   
   <ul>
-  <?php foreach ($c as $key => $value) { ?>
-    <li class ="lien_categorie"> <a href="categorie.php?id=<?= $c['id'] ?>"> <?= $c['name']?> </a> </li>
+  <?php foreach ($selection as $category) { ?>
+    <li class ="lien_categorie"> <a href="categorie.php?id=<?= $category->id ?>"> <?= $category->name?> </a> </li>
     <?php } ?>
   </ul>
 

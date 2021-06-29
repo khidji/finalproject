@@ -21,9 +21,8 @@ $user_post = $pdo->prepare('SELECT * FROM posts WHERE user = ?');
 $user_post->execute(array($get_pseudo));
 
 if($user_post->rowCount() != 0) {
-	$user_post = $user_post->fetch();
-	$title = $user_post['title'];
-	$content = $user_post['content'];
+	$user_post = $user_post->fetchAll(PDO::FETCH_OBJ);
+
 } 
 
 
@@ -51,8 +50,9 @@ if($user_post->rowCount() != 0) {
 			<button > Créer un post</button>
 			</a>
 			<p>Voici les articles que tu as posté :   insérer articles</p>
-			<h1><?= $title ?></h1>
-			<p><?= $content ?></p>
+			<?php foreach($user_post as $post) { ?>
+			<h1><a href="article.php?id=<?= $post->id ?>"><?= htmlentities($post->title) ?> </a></h1>
+			<?php } ?>
 		</main>
 
 <?php include ('template/footer.php'); ?>

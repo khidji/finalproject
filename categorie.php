@@ -14,7 +14,7 @@ $user = $_SESSION['user'];
 
 if(isset($_GET['id']) && !empty($_GET['id'])){
     $get_id = htmlentities($_GET['id']);
-    $articles = $pdo->prepare('SELECT * FROM posts WHERE category_id = ?');
+    $articles = $pdo->prepare('SELECT * FROM posts WHERE category_id = ? ORDER BY id DESC');
     $articles->execute(array($get_id));
     $article = $articles->fetch();
     $title = $article['title'];

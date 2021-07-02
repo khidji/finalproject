@@ -17,7 +17,7 @@ $user = $_SESSION['user'];
 
 
 $get_pseudo = htmlentities($user['pseudo']);
-$user_post = $pdo->prepare('SELECT * FROM posts WHERE user = ?');
+$user_post = $pdo->prepare('SELECT * FROM posts WHERE user = ? ORDER BY id DESC');
 $user_post->execute(array($get_pseudo));
 
 if($user_post->rowCount() != 0) {
@@ -51,7 +51,7 @@ if($user_post->rowCount() != 0) {
 			</a>
 			<p>Voici les articles que tu as posté :   insérer articles</p>
 			<?php foreach($user_post as $post) { ?>
-			<h1><a href="article.php?id=<?= $post->id ?>"><?= htmlentities($post->title) ?> </a></h1>
+			<h1><a href="article.php?id=<?= $post->id ?>"><?= htmlentities($post->title) ?> </a> || <a href="edit.php?edit=<?= $post->id?>">modifier</a> || <a href="">supprimer</a></h1>
 			<?php } ?>
 		</main>
 

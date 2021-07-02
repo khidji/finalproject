@@ -15,7 +15,19 @@ if (!isset($_SESSION['user'])) {
 
 $user = $_SESSION['user'];
 
-$articles = $pdo->query('SELECT * FROM posts ORDER BY id DESC LIMIT 10');
+$currentPage = (int)$_GET['page'] ?? 1 ?: 1;
+if ($currentPage <= 0){
+    $e = 'Numéro de page invalide';
+}
+$count = (int)$pdo->query('SELECT COUNT(id) FROM posts')->fetch(PDO::FETCH_NUM)[0];
+$perpage = 12;
+$pages = ceil($count / $perpage);
+if ($currentPage > $pages){
+    $e = 'Cette page n\'existe pas';
+}
+$offset = ($perpage * $currentPage - 1);
+$query = $pdo->query("SELECT * FROM posts ORDER BY id DESC LIMIT $perpage OFFSET $offset");
+
 
 
 
@@ -28,17 +40,15 @@ $articles = $pdo->query('SELECT * FROM posts ORDER BY id DESC LIMIT 10');
 
 
 		<main>
-			<h1 class="welcome">Bienvenue
+			<h1 class="welcome"> Voici tous les posts
 				<?=$user['pseudo'];?>
 			</h1>
-      		<p class="p_home">T'as besoin d'aide ? Alors <a class="a_newpost" href="newpost.php"> crée une demande d'aide</a> ! </p>
-			<h2 class="h2_home">Dernières publications:</h2>
+
 			<ul>
-				<?php while ($a = $articles->fetch()) { ?>
+				<?php while ($a = $query->fetch()) { ?>
 				<li class ="lien_article"> <a href="article.php?id=<?= $a['id'] ?>"> <?= $a['title']?> </a> </li>
 				<?php } ?>
 			</ul>
-			<a href="posts.php">voir tous les posts</a>
 
 		</main>
 

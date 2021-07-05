@@ -17,20 +17,8 @@ $uploadOk = 1;
 $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 
 
-
 if (isset ($_POST['article_title'], $_POST['article_content'])) {
        
-    // Check if image file is a actual image or fake image
-    if(isset($_POST["submit"])) {
-        $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
-        if($check !== false) {
-            $uploadOk = 1;
-        } else {
-            $error_article = "File is not an image.";
-            $uploadOk = 0;
-        }
-        }
-
     // Check file size
     if ($_FILES["fileToUpload"]["size"] > 500000) {
         $error_article = "Sorry, your file is too large.";

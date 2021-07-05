@@ -1,6 +1,10 @@
 @import './reset';
 @import './variables';
-@import './fonts';
+@import './fonts'; 
+
+html {
+  background-color: #b3b3b3;
+}
 
 .logo {
   max-height: 4rem;
@@ -49,7 +53,7 @@ header {
 }
 
 main {
-  padding: 4rem;
+  padding: 4rem; 
   grid-area: main;
 
 }
@@ -60,8 +64,13 @@ footer {
 }
 
 
+
 @import 'auth/auth.scss';
 @import 'auth/signup.scss';
-
 @import 'home/home.scss';
 @import 'newpost/newpost.scss';
+@import 'profile/profile.scss';
+@import 'categories/category.scss';
+@import 'categories/categories.scss';
+@import 'categories/article.scss';
+  

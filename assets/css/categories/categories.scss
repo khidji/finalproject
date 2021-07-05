@@ -1,0 +1,15 @@
+@import '../variables';
+@import '../fonts';
+
+.lien_categories {
+
+    a {
+        color: $maincolor;
+    }
+
+    li {
+        padding: 1rem;
+        font-weight: bold;
+    }
+
+}

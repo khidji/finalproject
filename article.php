@@ -39,9 +39,9 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 <?php include ('template/header.php'); ?>
 
 <main>
-    <h1><?= $title ?></h1>
-    <p><?= $content ?></p>
-    <img src="<?php echo $image; ?>">
+    <h1 class="article_titre"><?= $title ?></h1>
+    <p class="article_content"><?= $content ?></p>
+    <img class="article_img" src="<?php echo $image; ?>">
 </main>
 
 <?php include ('template/footer.php'); ?>

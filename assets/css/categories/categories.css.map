@@ -1,0 +1,11 @@
+{
+    "version": 3,
+    "mappings": "AEAA,UAAU;EACR,WAAW,EAAE,SAAoB;EACjC,GAAG,EAAE,+CAAqD;EAC1D,GAAG,EAAE,qDAA2D,CAAC,2BAA2B,EAC1F,+CAAqD,CAAC,kBAAkB,EACxE,gDAAsD,CAAC,cAAc,EACrE,uDAAwE,CAAC,aAAa;EACxF,WAAW,EAAE,MAAM;EACnB,UAAU,EAAE,MAAM;EAClB,YAAY,EAAE,KAAK;;;AFNrB,AAEI,gBAFY,CAEZ,CAAC,CAAC;EACE,KAAK,ECND,OAAO;CDOd;;AAJL,AAMI,gBANY,CAMZ,EAAE,CAAC;EACC,OAAO,EAAE,IAAI;EACb,WAAW,EAAE,IAAI;CACpB",
+    "sources": [
+        "categories.scss",
+        "../_variables.scss",
+        "../_fonts.scss"
+    ],
+    "names": [],
+    "file": "categories.css"
+}

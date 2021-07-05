@@ -1,0 +1,26 @@
+@import '../variables';
+@import '../fonts';
+
+
+.article_titre{
+    font-weight: bold;
+    color: $maincolor;
+    padding: 2rem;
+    margin-left: 50%;
+    transform:translate(-50%);
+    text-align: center;
+} 
+
+.article_content {
+    margin-left: 50%;
+    transform:translate(-50%);
+    width: 70vw;
+    border: solid 1px $maincolor;
+    border-radius: 5px;
+}
+
+.article_img {
+    margin-left: 50%;
+    transform:translate(-50%);
+    padding: 1rem;
+}

@@ -27,7 +27,7 @@ $selection = $selection->fetchAll(PDO::FETCH_OBJ);
 
 <main>
   
-  <ul>
+  <ul class ="lien_categories">
   <?php foreach ($selection as $category) { ?>
     <li class ="lien_categorie"> <a href="categorie.php?id=<?= $category->id ?>"> <?= $category->name?> </a> </li>
     <?php } ?>

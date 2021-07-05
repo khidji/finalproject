@@ -34,9 +34,12 @@ if($user_post->rowCount() != 0) {
 <?php include ('template/header.php'); ?>
 
 		<main>
-			<h1>Bienvenue
+		<div class="title_user">
+		<h1>Bienvenue
 				<?=$user['first_name'];?>
 			</h1>
+		</div>
+		<div class="info_user">
 			<p>Tu es sur ton compte voici tes informations:
 			Tu t'appelles 				
 			<?=$user['first_name'];?> <?=$user['last_name'];?> !
@@ -45,14 +48,19 @@ if($user_post->rowCount() != 0) {
 			Ton numéro de téléphone est <?=$user['phone'];?>. 
 			Ton email est <?=$user['email'];?>.
 			</p>
+		</div>
+		<div class="newpost_user">
 			<h1>T'as besoin d'aide ? </h1>
 			<a href="newpost.php">
 			<button > Créer un post</button>
 			</a>
-			<p>Voici les articles que tu as posté :   insérer articles</p>
+		</div>
+		<div class="posts_user">
+			<h1>Voici les articles que tu as posté :</h1>
 			<?php foreach($user_post as $post) { ?>
-			<h1><a href="article.php?id=<?= $post->id ?>"><?= htmlentities($post->title) ?> </a> || <a href="edit.php?edit=<?= $post->id?>">modifier</a> || <a href="">supprimer</a></h1>
+			<h2><a href="article.php?id=<?= $post->id ?>"><?= htmlentities($post->title) ?> </a> || <a href="edit.php?edit=<?= $post->id?>">modifier</a> || <a href="delete.php?delete=<?= $post->id?>">supprimer</a></h2>
 			<?php } ?>
+		</div>
 		</main>
 
 <?php include ('template/footer.php'); ?>

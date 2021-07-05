@@ -1,0 +1,28 @@
+@import '../variables';
+@import '../fonts';
+
+.title_user {
+    padding: 1rem;
+}
+
+.info_user {
+    padding: 1rem;
+    border: solid 1px $maincolor;
+}
+
+.newpost_user {
+    padding: 1rem;
+}
+
+.posts_user {
+    padding: 2rem;
+
+    h1 {
+        padding: .5rem;
+        font-weight: bold;
+    }
+
+    h2 {
+        padding: .5rem;
+    }
+}

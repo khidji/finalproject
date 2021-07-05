@@ -80,6 +80,7 @@ if (isset ($_POST['article_title'], $_POST['article_content'])) {
         $publication = $pdo->prepare("UPDATE posts SET content=?, title=?, image_url=? WHERE id = ?");
         $publication->execute(array($article_content, $article_title, $target_file, $edit_id));
         $error_article = 'votre article a bien été posté';
+        header("Location: profile.php");
     } else {
         $error_article = 'veuillez remplir les champs obligatoires (titre et contenu)';
     }
@@ -94,7 +95,7 @@ if (isset ($_POST['article_title'], $_POST['article_content'])) {
 
 <main class="newpost_main">
     <div class="newpost_container">
-        <form class="newpost_form" method="POST" enctype="multipart/form-data" action="article.php?id=<?= $a['id'] ?>">
+        <form class="newpost_form" method="POST" enctype="multipart/form-data" >
             <input type="text" name="article_title" placeholder= "Titre" value = "<?= $edit_article['title']?>">
             <textarea name="article_content" placeholder="contenu de l'article"><?= $edit_article['content']?></textarea>
             <input type="file" name="fileToUpload" id="fileToUpload">

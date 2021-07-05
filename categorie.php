@@ -32,13 +32,14 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 <?php include ('template/header.php'); ?>
 
 <main>
-
-
-    <ul>
-        <?php while ($a = $articles->fetch()) { ?>
-        <li class ="lien_article"> <a href="article.php?id=<?= $a['id'] ?>"> <?= $a['title']?> </a> </li>
-        <?php } ?>
-    </ul>
+    <div class ="container_test">
+    
+        <ul>
+            <?php while ($a = $articles->fetch()) { ?>
+            <li class ="lien_article"> <a href="article.php?id=<?= $a['id'] ?>"> <?= $a['title']?> </a> </li>
+            <?php } ?>
+        </ul>
+    </div>
 
 
 

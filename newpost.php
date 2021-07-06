@@ -67,6 +67,7 @@ if (isset ($_POST['article_title'], $_POST['article_content'])) {
 <?php include ('template/header.php'); ?>
 
 <main class="newpost_main">
+
     <div class="newpost_container">
         <form class="newpost_form" method="POST" enctype="multipart/form-data">
             <input type="text" name="article_title" placeholder= "Titre">

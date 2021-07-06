@@ -26,7 +26,8 @@ if(isset($_GET['edit']) && !empty($_GET['edit'])) {
 
 $target_file = null;
 
-if (file_exists($_FILES['image']['tmp_name']) || is_uploaded_file($_FILES['image']['tmp_name'])) {
+
+if (file_exists($_FILES['fileToUpload']['tmp_name']) || is_uploaded_file($_FILES['fileToUpload']['tmp_name'])) {
     $target_dir = "assets/images/bdd/";
     $target_file = $target_dir . basename($_FILES["fileToUpload"]["name"]);
     $uploadOk = 1;
@@ -77,8 +78,21 @@ if (isset ($_POST['article_title'], $_POST['article_content'])) {
         $article_title = htmlentities($_POST['article_title']);
         $article_content = htmlentities($_POST['article_content']);
 
-        $publication = $pdo->prepare("UPDATE posts SET content=?, title=?, image_url=? WHERE id = ?");
-        $publication->execute(array($article_content, $article_title, $target_file, $edit_id));
+        $query = "UPDATE posts SET content=?, title=?";
+        $params = [$article_content,$article_title];
+
+        if($target_file){ 
+            $query .= ", image_url=?";
+            $params[] = $target_file;
+        }
+
+        $query .= " WHERE id = ?";
+        $params[] =  $edit_id;
+
+    
+
+        $publication = $pdo->prepare($query);
+        $publication->execute($params);
         $error_article = 'votre article a bien été posté';
         header("Location: profile.php");
     } else {

@@ -14,10 +14,12 @@ $user = $_SESSION['user'];
 
 if(isset($_GET['id']) && !empty($_GET['id'])){
     $get_id = htmlentities($_GET['id']);
-    $articles = $pdo->prepare('SELECT * FROM posts WHERE category_id = ? ORDER BY id DESC');
-    $articles->execute(array($get_id));
-    $article = $articles->fetch();
-    $title = $article['title'];
+    $articles = $pdo->prepare('SELECT * FROM posts WHERE category_id =:id ORDER BY id DESC');
+    $articles->execute(['id'=> $get_id]);
+    
+    $articles = $articles->fetchAll();
+
+    
 
 } else {
     header("Location: index.php");
@@ -32,16 +34,15 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 <?php include ('template/header.php'); ?>
 
 <main>
+
     <div class ="container_test">
     
         <ul>
-            <?php while ($a = $articles->fetch()) { ?>
+            <?php foreach ($articles as $a):  ?>
             <li class ="lien_article"> <a href="article.php?id=<?= $a['id'] ?>"> <?= $a['title']?> </a> </li>
-            <?php } ?>
+            <?php endforeach; ?>
         </ul>
     </div>
-
-
 
 </main>
 

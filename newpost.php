@@ -73,14 +73,16 @@ if (isset ($_POST['article_title'], $_POST['article_content'])) {
             <input type="text" name="article_title" placeholder= "Titre">
             <textarea name="article_content" placeholder="contenu de l'article"></textarea>
             <input type="file" name="fileToUpload" id="fileToUpload">
-            <label for="categories">Choisi une catégorie</label>
-            <select id="categories" name="categories">
-                <option value="1">HTML</option>
-                <option value="2">CSS</option>
-                <option value="3">JavaScript</option>
-                <option value="4">PHP</option>
-                <option value="5">Autre</option>
-            </select>
+            <div>
+                <label for="categories">Choisi une catégorie</label>
+                <select id="categories" name="categories">
+                    <option value="1">HTML</option>
+                    <option value="2">CSS</option>
+                    <option value="3">JavaScript</option>
+                    <option value="4">PHP</option>
+                    <option value="5">Autre</option>
+                </select>
+            </div>
             <input class="button" type="submit" name="submit" value="envoyer l'article">
         </form>
         <?php if(isset($error_article)) {echo $error_article;} ?>

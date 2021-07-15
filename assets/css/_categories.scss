@@ -1,0 +1,29 @@
+@import 'variables';
+@import 'fonts';
+
+.body_categories {
+    padding: 5rem;
+    background-image: url("../images/background_2.jpg");
+}
+
+
+.lien_categories {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    color: $secondary_color;
+    justify-content: space-around;
+    align-items: center;
+    
+
+    .lien_categorie {
+        padding: 1rem;
+        font-size: 6rem;
+    }
+
+    .lien_categorie:hover {
+        color: $third_color;
+        transform: scale(110%);
+    }
+
+}

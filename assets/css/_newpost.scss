@@ -1,5 +1,5 @@
-@import '../variables';
-@import '../fonts';
+@import 'variables';
+@import 'fonts';
 
 .newpost_main {
     background: rgba(0, 0, 0, 0.5) url('../images/bg.jpg') no-repeat center;
@@ -34,6 +34,14 @@
         border: none;
         border-radius: 5px;
         border-bottom: 4px solid transparent;
+    }
+
+    textarea {
+        width: 80% ;
+        height: 20rem;
+        resize: none;
+        border: none;
+        border-radius: 5px;
     }
 
     

@@ -25,7 +25,7 @@ $selection = $selection->fetchAll(PDO::FETCH_OBJ);
 <html lang="en">
 <?php include ('template/header.php'); ?>
 
-<main>
+<main class ="body_categories">
   
   <ul class ="lien_categories">
   <?php foreach ($selection as $category) { ?>
@@ -34,7 +34,12 @@ $selection = $selection->fetchAll(PDO::FETCH_OBJ);
   </ul>
 
 </main>
+
+
+
 <?php include ('template/footer.php'); ?>
+
+
 
 
 </html>

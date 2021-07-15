@@ -1,10 +1,6 @@
-@import './reset';
-@import './variables';
-@import './fonts'; 
-
-html {
-  background-color: #b3b3b3;
-}
+@import 'reset';
+@import 'variables';
+@import 'fonts'; 
 
 .logo {
   max-height: 4rem;
@@ -22,15 +18,17 @@ body {
 }
 
 header { 
+  z-index: 10;
   @include flex(center, space-between);
   grid-area: header;
   position: fixed;
   top: 0;
   left: 0;
   right: 0;
-  background-color: $maincolor;
-  color: $white;
+  background-color: $secondary_color;
+  color: $maincolor;
   padding: 2rem 4rem;
+  border-radius: 0 0 5px 5px;
 
   div {
     width: 8rem;
@@ -53,7 +51,6 @@ header {
 }
 
 main {
-  padding: 4rem; 
   grid-area: main;
 
 }
@@ -61,17 +58,24 @@ main {
 footer {
   @include flex(center, center);
   grid-area: footer;
+  background-color: $secondary_color;
+  color: $maincolor;
+  padding: 2rem 4rem;
+  border-radius: 5px 5px 0 0;
+
+
 }
 
 
-
-@import 'auth/auth.scss';
-@import 'auth/signup.scss';
-@import 'home/home.scss';
-@import 'newpost/newpost.scss';
-@import 'profile/profile.scss';
-@import 'categories/category.scss';
-@import 'categories/categories.scss';
-@import 'categories/article.scss';
+@import 'auth';
+@import 'signup';
+@import 'home';
+@import 'newpost';
+@import 'profile';
+@import 'category';
+@import 'categories';
+@import 'article';
   
+@import 'posts';
+
 

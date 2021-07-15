@@ -15,7 +15,7 @@ if (!isset($_SESSION['user'])) {
 
 $user = $_SESSION['user'];
 
-$currentPage = (int)$_GET['page'] ?? 1 ?: 1;
+$currentPage = (int)($_GET['page'] ?? 1) ?: 1;
 if ($currentPage <= 0){
     $e = 'Numéro de page invalide';
 }
@@ -25,7 +25,7 @@ $pages = ceil($count / $perpage);
 if ($currentPage > $pages){
     $e = 'Cette page n\'existe pas';
 }
-$offset = ($perpage * $currentPage - 1);
+$offset = $perpage * ($currentPage - 1);
 $query = $pdo->query("SELECT * FROM posts ORDER BY id DESC LIMIT $perpage OFFSET $offset");
 
 
@@ -49,6 +49,16 @@ $query = $pdo->query("SELECT * FROM posts ORDER BY id DESC LIMIT $perpage OFFSET
 				<li class ="lien_article"> <a href="article.php?id=<?= $a['id'] ?>"> <?= $a['title']?> </a> </li>
 				<?php } ?>
 			</ul>
+
+			<div class='boutons_pages'>
+					<?php if ($currentPage > 1): ?>
+						<a href="posts.php?page=<?= $currentPage -1 ?>" class="boutons_pages_btn">Page précédente</a>
+					<?php endif ?>	
+					<?php if ($currentPage < $pages): ?>
+						<a href="posts.php?page=<?= $currentPage +1 ?>" class="boutons_pages_btn">Page suivante</a>
+					<?php endif ?>	
+
+			</div>
 
 		</main>
 

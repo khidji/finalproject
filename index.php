@@ -18,7 +18,6 @@ $user = $_SESSION['user'];
 $articles = $pdo->query('SELECT * FROM posts ORDER BY id DESC LIMIT 10');
 
 
-
 ?>
 
 <!DOCTYPE html>
@@ -28,18 +27,37 @@ $articles = $pdo->query('SELECT * FROM posts ORDER BY id DESC LIMIT 10');
 
 
 		<main>
-			<h1 class="welcome">Bienvenue
-				<?=$user['pseudo'];?>
-			</h1>
-      		<p class="p_home">T'as besoin d'aide ? Alors <a class="a_newpost" href="newpost.php"> crée une demande d'aide</a> ! </p>
-			<h2 class="h2_home">Dernières publications:</h2>
-			<ul>
-				<?php while ($a = $articles->fetch()) { ?>
-				<li class ="lien_article"> <a href="article.php?id=<?= $a['id'] ?>"> <?= $a['title']?> </a> </li>
-				<?php } ?>
-			</ul>
-			<a href="posts.php">voir tous les posts</a>
+			<div class="accueil">
+				<h1 class="welcome">Bienvenue
+					<?=$user['pseudo'];?>
+				</h1>
+				<p class="p_home">Sur ce site internet, tu peux déposer une demande d'aide, les autres utilisateurs te donneront surement la solution ! </p>
+				<a class="a_newpost" href="newpost.php"> Demander de l'aide</a> 
+			</div>
 
+
+
+
+			<div class="container_recentposts">
+				<h2 class="h2_home">Dernières publications:</h2>
+				<ul class="recent_posts">
+					<?php while ($a = $articles->fetch()) { ?>
+						<li class ="post"> 
+							<div class="card">
+								
+								<img src="<?= $a['image_url'] ?>" alt="" class="card__image "> 
+								
+								<div class="card__content">
+									<div class="card__title"><h3><?= $a['title']?> </h3> </div>
+									<p class="card__text"> </p>
+									<a class="btn btn--block card__btn" href="article.php?id=<?= $a['id'] ?>"> voir l'article </a>
+								</div>
+							</div>
+						</li>
+					<?php } ?>
+				</ul>
+				<a class="btn_posts" href="posts.php">voir tous les posts</a>
+			</div>
 		</main>
 
 <?php include ('template/footer.php'); ?>

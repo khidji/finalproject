@@ -47,12 +47,14 @@ $users_admin = $users_admin->fetchAll();
         </div>
             
         <section id="users_admin">
+            <h2 class="admin_titres">Utilisateurs</h2>
             <ul class="posts">
 				<?php foreach ($users_admin as $u):  ?>
 				<li class="li_admin"> 
-                    <h3><?= $u['pseudo']?> </h3>		
+                    <h3><?= $u['pseudo']?> </h3>
+                    <p> compte créé le <?= $u['created_at']?> </p>
+                    <a href="">voir toutes les infos</a> || <a href="">modifier le rôle</a> || <a href="">supprimer le compte</a>		
                 </li>
-
 				<?php endforeach; ?>
             </ul>	
 
@@ -61,7 +63,8 @@ $users_admin = $users_admin->fetchAll();
 
 
         <section id="posts_admin">
-        <ul class="posts">
+            <h2 class="admin_titres">Posts</h2>
+            <ul class="posts">
 				<?php foreach ($posts_admin as $a):  ?>
 				<li class="li_admin"> 
 				<h3><?= $a['title']?> </h3>

@@ -4,16 +4,12 @@
 $color: #111;
 $primary: #FFAB9D;
 
-.li_admin {
-    padding: 1rem;
-}
-
-.posts {
-    border:solid 1px;
+html {
+    scroll-behavior: smooth;
 }
 
 .choix {
-    height: 60vh;
+    height: 70vh;
     background-image: url("../images/background_4.jpg");
     background-repeat: no-repeat;
     background-size: cover;
@@ -35,7 +31,6 @@ $primary: #FFAB9D;
 
 
 }
-
 
 
 .cta {
@@ -76,18 +71,40 @@ $primary: #FFAB9D;
         stroke-width: 2;
         transform: translateX(-5px);
         transition: all .3s ease;
-    
-        &:hover{
-            &:before {
-                width: 100%;
-                background: rgba($primary,1);
-            }
-            svg {
-            transform: translateX(0);
-            }
-        }
-        &:active{
-            transform: scale(.96);
-        }
+    }
+}    
+
+.cta:hover{
+    &:before {
+        width: 100%;
+        background: rgba($primary,1);
+    }
+    svg {
+    transform: translateX(0);
+    }
+}
+.cta:active{
+    transform: scale(.96);
+}
+
+
+.admin_titres {
+    padding: 2rem;
+    text-align: center;
+    font-weight: 900;
+    letter-spacing: .25em;
+    text-transform: uppercase;
+    vertical-align: middle;
+
+}
+
+.li_admin {
+    padding: 1rem;
+    h3 {
+        color: $third_color;
+        font-weight: bold;
+    }
+    a {
+        color: $text_color;
     }
 }

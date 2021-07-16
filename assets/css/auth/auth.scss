@@ -1,4 +1,4 @@
-@import 'variables';
+@import '../variables';
 
 .presentation_container {
   margin-left: 50%;
@@ -51,6 +51,7 @@
   font-family: $dw-font-family;
 }
 
+
 .container {
   font-family: $font-family;
   position: fixed;
@@ -59,11 +60,11 @@
   right: 0;
   bottom: 0;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5) url('../../images/bg.jpg') no-repeat center;
+  background: rgba(0, 0, 0, 0.5) url('/assets/images/bg.jpg') no-repeat center;
 
   .blur {
     @extend %form;
-    background: rgba(255, 255, 255, 0.5) url('../../images/bg.jpg') no-repeat center;
+    background: rgba(255, 255, 255, 0.5) url('/assets/images/bg.jpg') no-repeat center;
     filter: blur(5px);
     height: 100%;
   }

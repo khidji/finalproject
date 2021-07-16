@@ -61,7 +61,7 @@ $lienaltimg = "https://images.pexels.com/photos/411195/pexels-photo-411195.jpeg?
 						</li>
 					<?php } ?>
 				</ul>
-				<a class="btn_posts" href="posts.php">voir tous les posts</a>
+				<a class="bouton_accueil boutons_pages_btn" href="posts.php">voir tous les posts</a>
 			</div>
 		</main>
 

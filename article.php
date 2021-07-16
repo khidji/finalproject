@@ -11,6 +11,7 @@ if (!isset($_SESSION['user'])) {
 }
 
 $user = $_SESSION['user'];
+$lienaltimg = "https://images.pexels.com/photos/411195/pexels-photo-411195.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
 
 if(isset($_GET['id']) && !empty($_GET['id'])){
     $get_id = htmlentities($_GET['id']);
@@ -21,7 +22,13 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
         $article = $article->fetch();
         $title = $article['title'];
         $content = $article['content'];
-        $image = $article['image_url'];
+
+        if ($article['image_url'] != "assets/images/bdd/"){
+            $image = $article['image_url'];
+        }
+        else {
+            $image = $lienaltimg;		
+        }
     } else {
         die ('Cet article n\'existe pas !');
     }
@@ -39,9 +46,11 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
 <?php include ('template/header.php'); ?>
 
 <main>
-    <h1 class="article_titre"><?= $title ?></h1>
-    <p class="article_content"><?= $content ?></p>
-    <img class="article_img" src="<?php echo $image; ?>">
+    <div class="article">
+        <h1 class="article_titre"><?= $title ?></h1>
+        <p class="article_content"><?= $content ?></p>
+        <img class="article_img" src="<?php echo $image; ?>">
+    </div>
 </main>
 
 <?php include ('template/footer.php'); ?>

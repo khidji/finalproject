@@ -48,7 +48,7 @@
 }
 
 .btn_profile {
-    margin: 2rem 0 1rem 0;
+    margin: 2rem 0 0 0;
     background-color: white;
     border: 1px solid $maincolor;
     color: $text_color;
@@ -63,14 +63,22 @@
 
 .posts_user {
     padding: 2rem;
-
+    box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.5);
+    border: solid rgba(58, 58, 58, 0.308) 1px ;
+    border-radius: 0.25rem;
+    margin: 2rem auto;
     h2 {
         padding: .5rem;
         font-weight: bold;
         color: $third_color;
     }
 
-    h3 {
+    .element {
         padding: .5rem;
+        margin: .5rem;
+    }
+
+    .elements {
+        columns: 3;
     }
 }

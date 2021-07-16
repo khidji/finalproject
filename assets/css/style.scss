@@ -15,6 +15,7 @@ body {
   display: grid;
   grid-template-rows: 6.5rem auto 5rem;
   grid-template-areas: 'header' 'main' 'footer';
+  scroll-behavior: smooth;
 }
 
 header { 
@@ -67,7 +68,6 @@ footer {
 }
 
 
-@import 'auth';
 @import 'signup';
 @import 'home';
 @import 'newpost';
@@ -77,4 +77,7 @@ footer {
 @import 'article';
 @import 'posts';
 @import 'admin';
+
+
+
 

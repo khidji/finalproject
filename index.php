@@ -15,7 +15,7 @@ if (!isset($_SESSION['user'])) {
 
 $user = $_SESSION['user'];
 
-$articles = $pdo->query('SELECT * FROM posts ORDER BY id DESC LIMIT 10');
+$articles = $pdo->query('SELECT * FROM posts ORDER BY id DESC LIMIT 9');
 
 $lienaltimg = "https://images.pexels.com/photos/411195/pexels-photo-411195.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
 

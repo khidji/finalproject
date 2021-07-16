@@ -52,12 +52,20 @@ if($user_post->rowCount() != 0) {
 				Ton email est <span><?=$user['email'];?> </span>.
 			</p>
 			<a class="btn_profile" href="#"> Modifier mes infos</a> 
+			<?php if($user['is_admin'] = 1): ?>
+			<a class="btn_profile" href="admin.php"> Page administrateur</a>
+		<?php endif ?> 
+
+
 		</div>
 		<div class="newpost_user">
 			<h1>T'as besoin d'aide ? </h1>
 			<a class="a_newpost" href="newpost.php"> Demander de l'aide</a> 
 
 		</div>
+
+
+
 		<div class="posts_user">
 			<h2>Voici les articles que tu as posté :</h2>
 			<?php foreach($user_post as $post) { ?>

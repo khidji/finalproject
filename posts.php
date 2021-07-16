@@ -27,6 +27,7 @@ if ($currentPage > $pages){
 }
 $offset = $perpage * ($currentPage - 1);
 $query = $pdo->query("SELECT * FROM posts ORDER BY id DESC LIMIT $perpage OFFSET $offset");
+$query = $query->fetchAll();
 $lienaltimg = "https://images.pexels.com/photos/411195/pexels-photo-411195.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
 
 
@@ -45,34 +46,34 @@ $lienaltimg = "https://images.pexels.com/photos/411195/pexels-photo-411195.jpeg?
 			</h1>
 
 			<ul class="recent_posts">
-					<?php while ($a = $query->fetch()) { ?>
-						<li class ="post"> 
-							<div class="card">
-								
-								<img src="<?php if ($a['image_url'] != "assets/images/bdd/"): ?>
-										<?=$a['image_url'];?> 
-									<?php else : ?>
-										<?=$lienaltimg;?>		
-								 <?php endif?>" alt="image" class="card__image "> 
-								
-								<div class="card__content">
-									<div class="card__title"><h3><?= $a['title']?> </h3> </div>
-									<p class="card__text"> <?= substr(($a['content']), 0, 100).'...' ?> </p>
-									<a class="btn btn--block card__btn" href="article.php?id=<?= $a['id'] ?>"> voir l'article </a>
-								</div>
+				<?php foreach ($query as $a):  ?>
+					<li class ="post"> 
+						<div class="card">
+							
+							<img src="<?php if ($a['image_url'] != "assets/images/bdd/"): ?>
+									<?=$a['image_url'];?> 
+								<?php else : ?>
+									<?=$lienaltimg;?>		
+							<?php endif?>" alt="image" class="card__image "> 
+							
+							<div class="card__content">
+								<div class="card__title"><h3><?= $a['title']?> </h3> </div>
+								<p class="card__text"> <?= substr(($a['content']), 0, 100).'...' ?> </p>
+								<a class="btn btn--block card__btn" href="article.php?id=<?= $a['id'] ?>"> voir l'article </a>
 							</div>
-						</li>
-					<?php } ?>
+						</div>
 
+				<?php endforeach; ?>
+			</ul>							
 
-
+			</li>
 
 			<div class='boutons_pages'>
 					<?php if ($currentPage > 1): ?>
 						<a href="posts.php?page=<?= $currentPage -1 ?>" class="boutons_pages_btn">Page précédente</a>
 					<?php endif ?>	
 					<?php if ($currentPage < $pages): ?>
-						<button type="button" href="posts.php?page=<?= $currentPage +1 ?>" class="boutons_pages_btn">Page suivante</button>
+						<a type="button" href="posts.php?page=<?= $currentPage +1 ?>" class="boutons_pages_btn">Page suivante</a>
 					<?php endif ?>	
 
 			</div>

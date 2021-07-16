@@ -20,14 +20,14 @@ if ($currentPage <= 0){
     $e = 'Numéro de page invalide';
 }
 $count = (int)$pdo->query('SELECT COUNT(id) FROM posts')->fetch(PDO::FETCH_NUM)[0];
-$perpage = 12;
+$perpage = 6;
 $pages = ceil($count / $perpage);
 if ($currentPage > $pages){
     $e = 'Cette page n\'existe pas';
 }
 $offset = $perpage * ($currentPage - 1);
 $query = $pdo->query("SELECT * FROM posts ORDER BY id DESC LIMIT $perpage OFFSET $offset");
-
+$lienaltimg = "https://images.pexels.com/photos/411195/pexels-photo-411195.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
 
 
 
@@ -44,18 +44,35 @@ $query = $pdo->query("SELECT * FROM posts ORDER BY id DESC LIMIT $perpage OFFSET
 				<?=$user['pseudo'];?>
 			</h1>
 
-			<ul>
-				<?php while ($a = $query->fetch()) { ?>
-				<li class ="lien_article"> <a href="article.php?id=<?= $a['id'] ?>"> <?= $a['title']?> </a> </li>
-				<?php } ?>
-			</ul>
+			<ul class="recent_posts">
+					<?php while ($a = $query->fetch()) { ?>
+						<li class ="post"> 
+							<div class="card">
+								
+								<img src="<?php if ($a['image_url'] != "assets/images/bdd/"): ?>
+										<?=$a['image_url'];?> 
+									<?php else : ?>
+										<?=$lienaltimg;?>		
+								 <?php endif?>" alt="image" class="card__image "> 
+								
+								<div class="card__content">
+									<div class="card__title"><h3><?= $a['title']?> </h3> </div>
+									<p class="card__text"> <?= substr(($a['content']), 0, 100).'...' ?> </p>
+									<a class="btn btn--block card__btn" href="article.php?id=<?= $a['id'] ?>"> voir l'article </a>
+								</div>
+							</div>
+						</li>
+					<?php } ?>
+
+
+
 
 			<div class='boutons_pages'>
 					<?php if ($currentPage > 1): ?>
 						<a href="posts.php?page=<?= $currentPage -1 ?>" class="boutons_pages_btn">Page précédente</a>
 					<?php endif ?>	
 					<?php if ($currentPage < $pages): ?>
-						<a href="posts.php?page=<?= $currentPage +1 ?>" class="boutons_pages_btn">Page suivante</a>
+						<button type="button" href="posts.php?page=<?= $currentPage +1 ?>" class="boutons_pages_btn">Page suivante</button>
 					<?php endif ?>	
 
 			</div>

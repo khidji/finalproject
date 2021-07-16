@@ -17,6 +17,7 @@ $user = $_SESSION['user'];
 
 $articles = $pdo->query('SELECT * FROM posts ORDER BY id DESC LIMIT 10');
 
+$lienaltimg = "https://images.pexels.com/photos/411195/pexels-photo-411195.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940";
 
 ?>
 
@@ -45,11 +46,15 @@ $articles = $pdo->query('SELECT * FROM posts ORDER BY id DESC LIMIT 10');
 						<li class ="post"> 
 							<div class="card">
 								
-								<img src="<?= $a['image_url'] ?>" alt="" class="card__image "> 
+								<img src="<?php if ($a['image_url'] != "assets/images/bdd/"): ?>
+										<?=$a['image_url'];?> 
+									<?php else : ?>
+										<?=$lienaltimg;?>		
+								 <?php endif?>" alt="image" class="card__image "> 
 								
 								<div class="card__content">
 									<div class="card__title"><h3><?= $a['title']?> </h3> </div>
-									<p class="card__text"> </p>
+									<p class="card__text"> <?= substr(($a['content']), 0, 100).'...' ?> </p>
 									<a class="btn btn--block card__btn" href="article.php?id=<?= $a['id'] ?>"> voir l'article </a>
 								</div>
 							</div>

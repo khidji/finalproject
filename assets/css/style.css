@@ -1,5 +1,6 @@
 @charset "UTF-8";
 /* http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126 */
+@import url("https://fonts.googleapis.com/css?family=Raleway:500");
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -805,6 +806,15 @@ footer {
   color: #687975;
   padding: 0.5rem;
   text-transform: lowercase;
+  -webkit-transition: background-color 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+  transition: background-color 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+  -webkit-transition: color 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+  transition: color 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+}
+
+.btn:hover {
+  background-color: #335c61;
+  color: #f8e3d2;
 }
 
 .btn--block {
@@ -827,12 +837,11 @@ footer {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  -webkit-box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.5);
-          box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.5);
 }
 
 .card {
   max-width: 100%;
+  height: 30rem;
   background-color: white;
   border-radius: 0.25rem;
   -webkit-box-shadow: 0 20px 40px -14px rgba(0, 0, 0, 0.25);
@@ -860,7 +869,9 @@ footer {
 }
 
 .card__image {
+  margin-top: 1rem;
   max-width: 100%;
+  height: 60%;
   border-top-left-radius: 0.25rem;
   border-top-right-radius: 0.25rem;
   -webkit-filter: contrast(70%);
@@ -871,9 +882,13 @@ footer {
   transition: -webkit-filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
   transition: filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
   transition: filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91), -webkit-filter 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+  margin-left: 50%;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
 }
 
 .card__title {
+  padding: .5rem;
   color: #ebb287;
   font-size: 1.25rem;
   font-weight: 300;
@@ -888,6 +903,7 @@ footer {
   font-size: 0.875rem;
   line-height: 1.5;
   margin-bottom: 1.25rem;
+  padding: .5rem;
 }
 
 .btn_posts {
@@ -1000,13 +1016,70 @@ footer {
   font-display: block;
 }
 
+.body_profile {
+  padding: 2rem;
+  background-image: url("../images/background_3.jpg");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
 .title_user {
   padding: 1rem;
+  color: #335c61;
+  text-align: center;
+  font-size: 3rem;
 }
 
 .info_user {
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  position: relative;
+  margin: auto;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
   padding: 1rem;
-  border: solid 1px #335c61;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 10px 20px -9px rgba(0, 0, 0, 0.5);
+  border: solid rgba(58, 58, 58, 0.308) 1px;
+  border-radius: 0.25rem;
+}
+
+.info_user h2 {
+  color: #ebb287;
+  font-weight: bold;
+  margin: auto;
+  padding: 1rem;
+}
+
+.info_user p {
+  color: #687975;
+  padding: 1rem 0 0 0;
+}
+
+.info_user span {
+  font-weight: bold;
+}
+
+.btn_profile {
+  margin: 2rem 0 1rem 0;
+  background-color: white;
+  border: 1px solid #335c61;
+  color: #687975;
+  padding: 0.5rem;
+  text-transform: lowercase;
+  border-radius: .35rem;
 }
 
 .newpost_user {
@@ -1017,12 +1090,13 @@ footer {
   padding: 2rem;
 }
 
-.posts_user h1 {
+.posts_user h2 {
   padding: .5rem;
   font-weight: bold;
+  color: #ebb287;
 }
 
-.posts_user h2 {
+.posts_user h3 {
   padding: .5rem;
 }
 
@@ -1036,8 +1110,7 @@ footer {
 }
 
 .container_test {
-  margin-top: 2rem;
-  border: solid 2px #335c61;
+  margin: 5rem 0;
 }
 
 @font-face {
@@ -1125,9 +1198,67 @@ footer {
   display: -ms-flexbox;
   display: flex;
   margin: 0 4rem;
+  padding: 2rem;
+  margin-left: auto;
 }
 
 .boutons_pages_btn {
-  background-color: #335c61;
+  padding: 1rem;
+  text-align: center;
+  background-size: 500%;
+  border: none;
+  border-radius: 5rem;
+  -webkit-box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+          box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  -webkit-appearance: none;
+  background: -webkit-gradient(to right, #a2ccb6 0%, #fceeb5 50%, #ee786e 100%);
+  background: -webkit-gradient(linear, left top, right top, from(#a2ccb6), color-stop(50%, #fceeb5), to(#ee786e));
+  background: linear-gradient(to right, #a2ccb6 0%, #fceeb5 50%, #ee786e 100%);
+  background-size: 500%;
+  border: none;
+  border-radius: 5rem;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  color: #fff;
+  cursor: pointer;
+  font: 1.5em Raleway, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: .05em;
+  outline: none;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  width: 20rem;
+}
+
+.boutons_pages_btn:hover {
+  animation-name: gradient;
+  -webkit-animation-name: gradient;
+  animation-duration: 2s;
+  -webkit-animation-duration: s;
+  animation-iteration-count: 1;
+  -webkit-animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  -webkit-animation-fill-mode: forwards;
+}
+
+@-webkit-keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100%;
+  }
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100%;
+  }
 }
 /*# sourceMappingURL=style.css.map */

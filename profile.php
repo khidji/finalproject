@@ -33,32 +33,35 @@ if($user_post->rowCount() != 0) {
 
 <?php include ('template/header.php'); ?>
 
-		<main>
-		<div class="title_user">
-		<h1>Bienvenue
-				<?=$user['first_name'];?>
-			</h1>
-		</div>
+		<main class="body_profile">
+		<h1 class="title_user"> Profil de <?=$user['first_name'];?> </h1>
+		
 		<div class="info_user">
-			<p>Tu es sur ton compte voici tes informations:
-			Tu t'appelles 				
-			<?=$user['first_name'];?> <?=$user['last_name'];?> !
-			Ton pseudo est <?=$user['pseudo'];?>.
-			Tu habites en <?=$user['country'];?> à cette adresse : <?=$user['address'];?>.
-			Ton numéro de téléphone est <?=$user['phone'];?>. 
-			Ton email est <?=$user['email'];?>.
+			<h2>Informations personnelles</h2>
+			<p> Tu t'appelles <span> <?=$user['first_name'];?> <?=$user['last_name'];?> </span> !</p>
+			<p>
+				Ton pseudo est <span> <?=$user['pseudo'];?> </span>.
 			</p>
+			<p>
+				Tu habites en <span> <?=$user['country'];?>	</span>  à cette adresse : <span> <?=$user['address'];?> </span>.
+			</p>
+			<p>
+				Ton numéro de téléphone est <span><?=$user['phone'];?> </span>. 
+			</p>
+			<p>
+				Ton email est <span><?=$user['email'];?> </span>.
+			</p>
+			<a class="btn_profile" href="#"> Modifier mes infos</a> 
 		</div>
 		<div class="newpost_user">
 			<h1>T'as besoin d'aide ? </h1>
-			<a href="newpost.php">
-			<button > Créer un post</button>
-			</a>
+			<a class="a_newpost" href="newpost.php"> Demander de l'aide</a> 
+
 		</div>
 		<div class="posts_user">
-			<h1>Voici les articles que tu as posté :</h1>
+			<h2>Voici les articles que tu as posté :</h2>
 			<?php foreach($user_post as $post) { ?>
-			<h2><a href="article.php?id=<?= $post->id ?>"><?= htmlentities($post->title) ?> </a> || <a href="edit.php?edit=<?= $post->id?>">modifier</a> || <a href="delete.php?delete=<?= $post->id?>">supprimer</a></h2>
+			<h3><a href="article.php?id=<?= $post->id ?>"><?= htmlentities($post->title) ?> </a> || <a href="edit.php?edit=<?= $post->id?>">modifier</a> || <a href="delete.php?delete=<?= $post->id?>">supprimer</a></h3>
 			<?php } ?>
 		</div>
 		</main>

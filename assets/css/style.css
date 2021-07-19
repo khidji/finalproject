@@ -469,6 +469,7 @@ footer {
 }
 
 .welcome {
+  font-family: "Noticia Text", serif;
   text-align: center;
   font-size: 5rem;
   margin: 1rem;
@@ -489,6 +490,7 @@ footer {
 }
 
 .a_newpost {
+  font-family: "Noticia Text", serif;
   margin-left: 50%;
   -webkit-transform: translate(-50%);
           transform: translate(-50%);
@@ -510,6 +512,7 @@ footer {
 }
 
 .h2_home {
+  font-family: "Noticia Text", serif;
   text-align: center;
   font-size: 2rem;
   margin: 1rem;
@@ -518,18 +521,37 @@ footer {
 }
 
 .container_recentposts {
-  max-width: 98vw;
-  margin-bottom: 5rem;
+  position: relative;
+  max-width: 1500px;
+  margin: 5rem auto;
 }
 
 .recent_posts {
   display: -ms-grid;
   display: grid;
-  -ms-grid-columns: (1fr)[3];
-      grid-template-columns: repeat(3, 1fr);
+  -ms-grid-columns: (1fr)[1];
+      grid-template-columns: repeat(1, 1fr);
   width: 100%;
   grid-gap: .5rem;
   margin-bottom: 3rem;
+}
+
+@media (min-width: 768px) {
+  .recent_posts {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[2];
+        grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 992px) {
+  .recent_posts {
+    display: -ms-grid;
+    display: grid;
+    -ms-grid-columns: (1fr)[3];
+        grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .btn {
@@ -639,10 +661,9 @@ footer {
 }
 
 .bouton_accueil {
-  margin-left: 50%;
+  margin-left: 45%;
   -webkit-transform: translate(-50%);
           transform: translate(-50%);
-  text-align: center;
 }
 
 @font-face {
@@ -752,6 +773,7 @@ footer {
   color: #335c61;
   text-align: center;
   font-size: 3rem;
+  font-family: "Noticia Text", serif;
 }
 
 .info_user {
@@ -803,6 +825,17 @@ footer {
   padding: 0.5rem;
   text-transform: lowercase;
   border-radius: .35rem;
+  -webkit-transition: background-color 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+  transition: background-color 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+  -webkit-transition: color 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+  transition: color 0.5s cubic-bezier(0.43, 0.41, 0.22, 0.91);
+}
+
+.btn_profile:hover {
+  display: block;
+  width: 100%;
+  background-color: #335c61;
+  color: #f8e3d2;
 }
 
 .newpost_user {
@@ -832,6 +865,10 @@ footer {
 .posts_user .elements {
   -webkit-columns: 3;
           columns: 3;
+}
+
+.titre_article_profile {
+  font-weight: bold;
 }
 
 @font-face {
@@ -876,6 +913,7 @@ footer {
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  font-family: "Noticia Text", serif;
 }
 
 .lien_categories .lien_categorie {
@@ -1127,5 +1165,120 @@ html {
 
 .li_admin a {
   color: #687975;
+}
+
+.informations_perso {
+  background: rgba(0, 0, 0, 0.5) url("/assets/images/background_4.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 100vh;
+}
+
+.informations_perso form {
+  padding: 2rem;
+  margin-top: 5rem;
+  margin-left: 50%;
+  -webkit-transform: translate(-50%);
+          transform: translate(-50%);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-flow: column nowrap;
+          flex-flow: column nowrap;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  gap: 2rem;
+  z-index: 1;
+  width: 90vw;
+  max-width: 800px;
+  border-radius: 10px;
+  overflow: auto;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  -webkit-box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.25);
+          box-shadow: 2px 2px 2px 0px rgba(0, 0, 0, 0.25);
+}
+
+.informations_perso p.error {
+  color: #ad1010;
+  background-color: rgba(223, 105, 105, 0.301);
+  border: 2px solid rgba(144, 17, 17, 0.575);
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-size: 0.8em;
+}
+
+.informations_perso input {
+  padding: 0.5rem 1.5rem 0.5rem 0.5rem;
+  border: none;
+  border-radius: 5px;
+  border-bottom: 4px solid transparent;
+}
+
+.informations_perso a {
+  text-align: center;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+  margin: auto;
+  -webkit-transition: all 175ms ease-in;
+  transition: all 175ms ease-in;
+  position: relative;
+}
+
+.informations_perso a:before {
+  content: '';
+  position: absolute;
+  bottom: -0.25rem;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #294345;
+  -webkit-transform: scale(0);
+          transform: scale(0);
+  -webkit-transition: all 175ms ease-in;
+  transition: all 175ms ease-in;
+  -webkit-transform-origin: 0% 50%;
+          transform-origin: 0% 50%;
+}
+
+.informations_perso a:hover {
+  color: #294345;
+}
+
+.informations_perso a:hover:before {
+  content: '';
+  position: absolute;
+  bottom: -0.25rem;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #294345;
+  -webkit-transform: scale(1);
+          transform: scale(1);
+}
+
+.informations_perso button {
+  font-family: "Nunito Sans", Arial, Helvetica, sans-serif;
+  padding: 0.5rem 2.5rem;
+  border: none;
+  width: 100%;
+  background-color: #294345;
+  color: #fff;
+  cursor: pointer;
+  -webkit-transition: all 120ms ease-in;
+  transition: all 120ms ease-in;
+  border-radius: 5px;
+}
+
+.informations_perso button:hover {
+  background-color: #417579;
+  -webkit-transform: scale(1.015);
+          transform: scale(1.015);
 }
 /*# sourceMappingURL=style.css.map */

@@ -52,9 +52,9 @@ if($user_post->rowCount() != 0) {
 				Ton email est <span><?=$user['email'];?> </span>.
 			</p>
 			<a class="btn_profile" href="informations.php?edit=<?= $user['pseudo']?>"> Modifier mes infos</a> 
-			<?php if($user['is_admin'] = 1): ?>
+			<?php if($user['is_admin'] == 1): ?>
 			<a class="btn_profile" href="admin.php"> Page administrateur</a>
-		<?php endif ?> 
+			<?php endif ?> 
 
 
 		</div>
@@ -69,7 +69,7 @@ if($user_post->rowCount() != 0) {
 			<h2>Voici les articles que tu as posté :</h2>
 			<div class="elements">
 				<?php foreach($user_post as $post) { ?>
-					<h3 class="element"><a href="article.php?id=<?= $post->id ?>"><?= htmlentities($post->title) ?> </a> || <a href="edit.php?edit=<?= $post->id?>">modifier</a> || <a href="delete.php?delete=<?= $post->id?>">supprimer</a></h3>
+					<h3 class="element"><a class="titre_article_profile" href="article.php?id=<?= $post->id ?>"><?= htmlentities($post->title) ?> </a> || <a href="edit.php?edit=<?= $post->id?>">modifier</a> || <a href="delete.php?delete=<?= $post->id?>">supprimer</a></h3>
 					<?php } ?>
 			</div>
 		</div>

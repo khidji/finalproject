@@ -13,6 +13,7 @@
 }
 
 .welcome {
+    font-family: $font-title;
     text-align: center;
     font-size: 5rem;
     margin: 1rem;
@@ -33,6 +34,7 @@
 }
 
 .a_newpost {
+    font-family: $font-title;
     margin-left: 50%;
     transform: translate(-50%);
     background-color:$secondary_color;
@@ -53,6 +55,7 @@
 }
 
 .h2_home {
+    font-family: $font-title;
     text-align: center;
     font-size: 2rem;
     margin: 1rem;
@@ -62,16 +65,29 @@
 
 
 .container_recentposts {
-    max-width: 98vw;
-    margin-bottom: 5rem;
+    position: relative;
+    max-width: 1500px;
+    margin: 5rem auto;
 }
 
 .recent_posts {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     width: 100%;
     grid-gap: .5rem;
     margin-bottom: 3rem;
+
+    @include md {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include lg {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+
 }
 
 
@@ -161,8 +177,8 @@
   
   
 .bouton_accueil {
-    margin-left: 50%;
-    transform: translate(-50%);
-    text-align: center;
+    margin-left: 45%;
+    transform: translate(-50%);    
 }
+
 

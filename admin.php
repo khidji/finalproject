@@ -53,7 +53,7 @@ $users_admin = $users_admin->fetchAll();
 				<li class="li_admin"> 
                     <h3><?= $u['pseudo']?> </h3>
                     <p> compte créé le <?= $u['created_at']?> </p>
-                    <a href="">voir toutes les infos</a> || <a href="">modifier le rôle</a> || <a href="">supprimer le compte</a>		
+                    <a href="admin_informations.php?pseudo=<?=$u['pseudo']?>">Modifier et voir toutes les infos</a> || <a href="supprimercompte.php?pseudo=<?=$u['pseudo']?>">supprimer le compte</a>		
                 </li>
 				<?php endforeach; ?>
             </ul>	

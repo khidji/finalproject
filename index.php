@@ -54,7 +54,7 @@ $lienaltimg = "https://images.pexels.com/photos/411195/pexels-photo-411195.jpeg?
 								
 								<div class="card__content">
 									<div class="card__title"><h3><?= $a['title']?> </h3> </div>
-									<p class="card__text"> <?= substr(($a['content']), 0, 100).'...' ?> </p>
+									<p class="card__text"> <?= substr(($a['content']), 0, 70).'...' ?> </p>
 									<a class="btn btn--block card__btn" href="article.php?id=<?= $a['id'] ?>"> voir l'article </a>
 								</div>
 							</div>

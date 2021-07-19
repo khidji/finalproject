@@ -14,6 +14,8 @@
     color: $maincolor;
     text-align: center;
     font-size: 3rem;
+    font-family: $font-title;
+
 }
 
 .info_user {
@@ -48,6 +50,7 @@
 }
 
 .btn_profile {
+    
     margin: 2rem 0 0 0;
     background-color: white;
     border: 1px solid $maincolor;
@@ -55,6 +58,17 @@
     padding: 0.5rem;
     text-transform: lowercase;
     border-radius: .35rem;
+    transition: background-color 0.5s cubic-bezier(.43,.41,.22,.91);;
+    transition: color 0.5s cubic-bezier(.43,.41,.22,.91);;
+
+
+}
+
+.btn_profile:hover {
+    display: block;
+    width: 100%;
+    background-color: $maincolor;
+    color: $secondary_color;
 }
 
 .newpost_user {
@@ -81,4 +95,8 @@
     .elements {
         columns: 3;
     }
+}
+
+.titre_article_profile {
+    font-weight: bold;
 }

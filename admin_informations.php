@@ -15,8 +15,8 @@ if (!isset($_SESSION['user'])) {
 $user = $_SESSION['user'];
 
 
-if(isset($_GET['edit']) && !empty($_GET['edit'])) {
-    $edit_pseudo = htmlentities($_GET['edit']);
+if(isset($_GET['pseudo']) && !empty($_GET['pseudo'])) {
+    $edit_pseudo = htmlentities($_GET['pseudo']);
     $edit_user = $pdo->prepare('SELECT * FROM users WHERE pseudo = ?');
     $edit_user->execute(array($edit_pseudo));
     if($edit_user->rowCount() == 1) {
@@ -39,6 +39,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         'country' => $country,
         'postal_code' => $postalCode,
         'email' => $email,
+        'administrateur' =>$administrateur,
       ] = $_POST;
   
         $query = ("UPDATE users SET
@@ -49,7 +50,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 city = :city,
                 country = :country,
                 postal_code = :postal_code,
-                email = :email
+                email = :email,
+                is_admin = :is_admin
                 WHERE pseudo = :pseudo");
   
         $statement = $pdo->prepare($query);
@@ -63,7 +65,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
           'country' => htmlentities($country),
           'postal_code' => htmlentities($postalCode),
           'email' => htmlentities($email),
-          'pseudo' => $user['pseudo']
+          'is_admin' => htmlentities($administrateur),
+          'pseudo' => $edit_pseudo
         ]);
   
         // si l'ajout s'est bien passé on redirige vers le login
@@ -92,16 +95,13 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <div class="container_infos">
 
     <form method='POST'>
-        <?php if (isset($errors['password_match'])): ?>
-            <p class="error"><?=$errors['password_match'];?></p>
-        <?php endif;?>
         <?php if (isset($errors['db_error'])): ?>
             <p class="error"><?=$errors['db_error'];?></p>
         <?php endif;?>
                 
         <div>
             <label for="pseudo">Pseudo</label>
-            <input value="<?=$user['pseudo'] ?? '';?>" placeholder=" " autocomplete="off" type="text"
+            <input value="<?=$edit_user['pseudo'] ?? '';?>" placeholder=" " autocomplete="off" type="text"
             name="pseudo" class="inputpseudo" id="pseudo" readonly="readonly">
         </div>
                 
@@ -111,7 +111,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif;?>
         <div>
             <label for="first_name">Prénom</label>
-            <input value="<?=$user['first_name'] ?? '';?>" placeholder=" " autocomplete="off" type="text"
+            <input value="<?=$edit_user['first_name'] ?? '';?>" placeholder=" " autocomplete="off" type="text"
             name="first_name" id="first_name">
         </div>
         <?php if (isset($errors['first_name'])): ?>
@@ -119,7 +119,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <?php endif;?>
         <div>
             <label for="last_name">Nom</label>
-            <input value="<?=$user['last_name'] ?? '';?>" placeholder=" " autocomplete="off" type="text"
+            <input value="<?=$edit_user['last_name'] ?? '';?>" placeholder=" " autocomplete="off" type="text"
             name="last_name" id="last_name">
         </div>
         <?php if (isset($errors['last_name'])): ?>
@@ -128,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
         <div>
             <label for="email">Email</label>
-            <input value="<?=$user['email'] ?? '';?>" placeholder=" " autocomplete="off" type="email" name="email"
+            <input value="<?=$edit_user['email'] ?? '';?>" placeholder=" " autocomplete="off" type="email" name="email"
             id="email">
         </div>
         <?php if (isset($errors['email'])): ?>
@@ -137,7 +137,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
         <div>
             <label for="phone">Numéro de téléphone</label>
-            <input value="<?=$user['phone'] ?? '';?>" placeholder=" " autocomplete="off" type="phone" name="phone"
+            <input value="<?=$edit_user['phone'] ?? '';?>" placeholder=" " autocomplete="off" type="phone" name="phone"
             id="phone">
         </div>
         <?php if (isset($errors['phone'])): ?>
@@ -146,7 +146,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     
         <div>
             <label for="address">Adresse</label>
-            <input value="<?=$user['address'] ?? '';?>" placeholder=" " autocomplete="off" type="address" name="address"
+            <input value="<?=$edit_user['address'] ?? '';?>" placeholder=" " autocomplete="off" type="address" name="address"
             id="address">
         </div>
         <?php if (isset($errors['address'])): ?>
@@ -155,7 +155,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             
         <div>
             <label for="postal_code">Code postal</label>
-            <input value="<?=$user['postal_code'] ?? '';?>" placeholder=" " autocomplete="off" type="text" name="postal_code"
+            <input value="<?=$edit_user['postal_code'] ?? '';?>" placeholder=" " autocomplete="off" type="text" name="postal_code"
             id="postal_code">
         </div>
         <?php if (isset($errors['postal_code'])): ?>
@@ -164,7 +164,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 
         <div>
             <label for="city">Ville</label>
-            <input value="<?=$user['city'] ?? '';?>" placeholder=" " autocomplete="off" type="text" name="city"
+            <input value="<?=$edit_user['city'] ?? '';?>" placeholder=" " autocomplete="off" type="text" name="city"
             id="city">
         </div>
         <?php if (isset($errors['city'])): ?>
@@ -173,8 +173,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                     
         <div>
             <label for="country">Pays</label>
-            <input value="<?=$user['country'] ?? '';?>" placeholder=" " autocomplete="off" type="text" name="country"
+            <input value="<?=$edit_user['country'] ?? '';?>" placeholder=" " autocomplete="off" type="text" name="country"
             id="country">
+        </div>
+        <?php if (isset($errors['country'])): ?>
+            <p class="error"><?=$errors['country'];?></p>
+        <?php endif;?>
+
+        <div>
+            <label for="administrateur">Administrateur
+            <input type="radio" name ="administrateur" id="administrateur" value="1" <?php if($edit_user['is_admin'] == 1){echo "checked";} ?>> Oui
+            <input type="radio" name ="administrateur" id="administrateur" valut="0" <?php if($edit_user['is_admin'] == 0){echo "checked";} ?>> Non
+            </label>
         </div>
         <?php if (isset($errors['country'])): ?>
             <p class="error"><?=$errors['country'];?></p>

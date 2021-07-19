@@ -20,20 +20,21 @@ CREATE TABLE `users` (
 	`updated_at` DATETIME
 );
 
+CREATE TABLE `categories` (
+	`id` INTEGER AUTO_INCREMENT PRIMARY KEY,
+	`name` VARCHAR(150) UNIQUE NOT NULL,
+	`created_at` DATETIME DEFAULT NOW(),
+	`updated_at` DATETIME
+);
+
 CREATE TABLE `posts` (
 	`id` INTEGER AUTO_INCREMENT PRIMARY KEY,
     `content` TEXT NOT NULL,
 	`image_url` TEXT,
 	`title` TEXT NOT NULL,
 	`user` VARCHAR(60) NOT NULL REFERENCES `users`(`pseudo`) ON DELETE CASCADE ON UPDATE CASCADE,
-	`category` VARCHAR(150) NOT NULL,
-	`created_at` DATETIME DEFAULT NOW(),
-	`updated_at` DATETIME
-);
-
-CREATE TABLE `categories` (
-	`id` INTEGER AUTO_INCREMENT PRIMARY KEY,
-	`name` VARCHAR(150) NOT NULL,
+	`category_id` INTEGER NOT NULL, 
+	FOREIGN KEY (`category_id`) REFERENCES `categories`(`id`),
 	`created_at` DATETIME DEFAULT NOW(),
 	`updated_at` DATETIME
 );
@@ -42,8 +43,8 @@ CREATE TABLE `comments` (
 	`id` INTEGER AUTO_INCREMENT PRIMARY KEY,
     `content` TEXT NOT NULL,
 	`user` VARCHAR(60) NOT NULL REFERENCES `users`(`pseudo`) ON DELETE CASCADE ON UPDATE CASCADE,
+	`post_id` INTEGER NOT NULL REFERENCES `posts`(`id`) ON DELETE CASCADE ON UPDATE CASCADE,
 	`created_at` DATETIME DEFAULT NOW(),
-	`updated_at` DATETIME
 );
 
 INSERT INTO `users` (
@@ -80,11 +81,3 @@ VALUES ('HTML'),
 	('PHP'),
     ('AUTRES');
 
-INSERT INTO `posts` (
-    `content`, 
-    `title`,
-    `user`,
-	`category`
-    )
-
-VALUES ('blablacontenu', 'testTITRE', '125', 'HTML');

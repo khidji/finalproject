@@ -1,6 +1,3 @@
-DROP DATABASE IF EXISTS `finalproject`;
-
-CREATE DATABASE `finalproject`;
 
 USE `finalproject`;
 

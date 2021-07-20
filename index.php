@@ -32,7 +32,7 @@ $lienaltimg = "https://images.pexels.com/photos/411195/pexels-photo-411195.jpeg?
 				<h1 class="welcome">Bienvenue
 					<?=$user['pseudo'];?>
 				</h1>
-				<p class="p_home">Sur ce site internet, tu peux déposer une demande d'aide, les autres utilisateurs te donneront surement la solution ! </p>
+				<p class="p_home">Si tu galères avec les langages de programmation, tu es au bon endroit ! Dépose une demande d'aide et quelqu'un te donnera surement la solution </p>
 				<a class="a_newpost" href="newpost.php"> Demander de l'aide</a> 
 			</div>
 

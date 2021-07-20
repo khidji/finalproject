@@ -2,12 +2,6 @@
 @import 'variables';
 @import 'fonts'; 
 
-.logo {
-  max-height: 4rem;
-  img {
-    max-height: 5rem;
-  }
-}
 
 body {
   font-family: $font-family;
@@ -20,7 +14,6 @@ body {
 
 header { 
   z-index: 10;
-  @include flex(center, space-between);
   grid-area: header;
   position: fixed;
   top: 0;
@@ -28,28 +21,71 @@ header {
   right: 0;
   background-color: $secondary_color;
   color: $maincolor;
-  padding: 2rem 4rem;
   border-radius: 0 0 5px 5px;
 
-  div {
-    width: 8rem;
-
-    a {
-      display: block;
-    }
-
-    img {
-      max-width: 100%;
-    }
-  }
 
   nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    flex-wrap: wrap;
+
     ul {
-      @include flex(center, center);
+      display: flex;
+      align-items: center;
+      justify-content: center;
       gap: 1rem;
+
+      li:hover{
+        color: $white;
+      }
+      
     }
+
+    a {
+      height: 5rem;
+
+      img {
+        height: 100%;
+      }
+    }
+
   }
 }
+
+.hamburger {
+  display: none;
+  background-color: transparent;
+  color: $white;
+  font-size: 2rem;
+  border: none;
+  cursor: pointer;
+}
+
+@media screen and (max-width : 767px){
+  .nav-ul {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 3rem;
+
+    li:hover{
+      color: $white;
+    }
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .show {
+    display: flex;
+
+
+  }
+}
+
 
 main {
   grid-area: main;

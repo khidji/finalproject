@@ -62,16 +62,22 @@ if($_POST['submit_comment']){
 
 <main>
     <div class="article">
-        <h1 class="article_titre"><?= $title ?></h1>
-        <p class="article_content"><?= $content ?></p>
-        <img class="article_img" src="<?php echo $image; ?>">
+        <div class="div_content">
+            <h1 class="article_titre"><?= $title ?></h1>
+            <p class="article_content"><?= $content ?></p>
+        </div>
+        <div class="div_img">
+            <img class="article_img" src="<?php echo $image; ?>">
+        </div>
     </div>
     <div class="commentaires">
         <h2>Commentaires</h2>
-        <form method="POST">
-            <input type="text" name="pseudo" value="<?= $user['pseudo']?>" readonly="readonly" >
+        <form method="POST" class="nouveau_commentaire">
+            <label for="pseudo">Pseudo</label>
+            <input class="input_form" type="text" name="pseudo" value="<?= $user['pseudo']?>" readonly="readonly" >
+            <label for="commentaire">Votre commentaire</label>
             <textarea name="commentaire" ></textarea>
-            <input type="submit" value="commenter" name="submit_comment">
+            <input class="submit" type="submit" value="commenter" name="submit_comment">
             <?php if (isset($c_error)) { echo "Erreur : ".$c_error;} ?>
         </form>
         <ul class ="comments">
@@ -86,7 +92,7 @@ if($_POST['submit_comment']){
                 <li class="commentaire">
                     <h3><?= $commentaire->user ?></h3>
                     <p><?= $commentaire->content?></p>
-                    <span><?= $commentaire->created_at?></span>
+                    <span>Publié le : <?= $commentaire->created_at?></span>
                     <?php if(($commentaire->user) == ($user['pseudo']) || ($user['is_admin'] == 1)) { ?>
                         <a href="deletecomment.php?delete=<?= $commentaire->id?>">supprimer</a>
                     <?php } ?>

@@ -3,12 +3,13 @@
 .presentation_container {
   margin-left: 50%;
   transform: translate(-50%);
-  margin-top: 10%;
   display: inline-block;
   max-width: 800px;
   width: 90vw;
   color: $white;
   text-shadow: #294345;
+  position: absolute;
+  top: 15rem;
 
 
   .titre_site {
@@ -60,11 +61,11 @@
   right: 0;
   bottom: 0;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5) url('/assets/images/bg.jpg') no-repeat center;
+  background: rgba(0, 0, 0, 0.5) url('/assets/images/background.jpg') no-repeat center;
 
   .blur {
     @extend %form;
-    background: rgba(255, 255, 255, 0.5) url('/assets/images/bg.jpg') no-repeat center;
+    background: rgba(255, 255, 255, 0.5) url('/assets/images/background.jpg') no-repeat center;
     filter: blur(5px);
     height: 100%;
   }
@@ -142,6 +143,7 @@
           &:focus + label,
           &:not(:placeholder-shown) + label {
             bottom: 2.4rem;
+            color: white;
             left: 0;
             font-size: 1em;
             transform: translateY(0);
@@ -182,6 +184,7 @@
       }
 
       a {
+        color: white;
         text-align: center;
         width: fit-content;
         margin: auto;

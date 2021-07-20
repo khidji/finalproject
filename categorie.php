@@ -18,7 +18,7 @@ if(isset($_GET['id']) && !empty($_GET['id'])){
     if ($currentPage <= 0){
         $e = 'Numéro de page invalide';
     }
-    $count = (int)$pdo->query('SELECT COUNT(id) FROM posts ')->fetch(PDO::FETCH_NUM)[0];
+    $count = (int)$pdo->query('SELECT COUNT(id) FROM posts')->fetch(PDO::FETCH_NUM)[0];
     $perpage = 6;
     $pages = ceil($count / $perpage);
     if ($currentPage > $pages){

@@ -92,7 +92,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		<title>finalproject | Inscription</title>
 
 		<link rel="stylesheet" href="assets/css/style.css">
-		<link rel="stylesheet" href="assets/css/auth/signup.css">
+		<link rel="stylesheet" href="assets/css/auth/auth.css">
 		<script src="assets/js/auth.js" defer></script>
 	</head>
 

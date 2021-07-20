@@ -70,17 +70,20 @@ if (isset ($_POST['article_title'], $_POST['article_content'])) {
 
     <div class="newpost_container">
         <form class="newpost_form" method="POST" enctype="multipart/form-data">
-            <input type="text" name="article_title" placeholder= "Titre">
-            <textarea name="article_content" placeholder="contenu de l'article"></textarea>
-            <input type="file" name="fileToUpload" id="fileToUpload">
-            <div>
+            <input class="input" type="text" name="article_title" placeholder= "Titre">
+            <textarea name="article_content" placeholder="Expliquez nous votre problème..."></textarea>
+            <div class="div_newpost">
+                <label for="fileToUpload">Ajouter une image</label>
+                <input type="file" name="fileToUpload" id="fileToUpload">
+            </div>
+            <div class="div_newpost">
                 <label for="categories">Choisi une catégorie</label>
                 <select id="categories" name="categories">
+                    <option value="5">Autre</option>
                     <option value="1">HTML</option>
                     <option value="2">CSS</option>
                     <option value="3">JavaScript</option>
                     <option value="4">PHP</option>
-                    <option value="5">Autre</option>
                 </select>
             </div>
             <input class="button" type="submit" name="submit" value="envoyer l'article">

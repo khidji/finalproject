@@ -3,12 +3,13 @@
   margin-left: 50%;
   -webkit-transform: translate(-50%);
           transform: translate(-50%);
-  margin-top: 10%;
   display: inline-block;
   max-width: 800px;
   width: 90vw;
   color: #fff;
   text-shadow: #294345;
+  position: absolute;
+  top: 15rem;
 }
 
 .presentation_container .titre_site {
@@ -58,11 +59,11 @@
   right: 0;
   bottom: 0;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5) url("/assets/images/bg.jpg") no-repeat center;
+  background: rgba(0, 0, 0, 0.5) url("/assets/images/background.jpg") no-repeat center;
 }
 
 .container .blur {
-  background: rgba(255, 255, 255, 0.5) url("/assets/images/bg.jpg") no-repeat center;
+  background: rgba(255, 255, 255, 0.5) url("/assets/images/background.jpg") no-repeat center;
   -webkit-filter: blur(5px);
           filter: blur(5px);
   height: 100%;
@@ -176,6 +177,7 @@
 .container form fieldset div input:focus + label,
 .container form fieldset div input:not(:placeholder-shown) + label {
   bottom: 2.4rem;
+  color: white;
   left: 0;
   font-size: 1em;
   -webkit-transform: translateY(0);
@@ -207,6 +209,7 @@
 }
 
 .container form fieldset a {
+  color: white;
   text-align: center;
   width: -webkit-fit-content;
   width: -moz-fit-content;

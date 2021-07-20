@@ -57,10 +57,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 		<main>
 
 			<div class="container">
-				<div class="presentation_container">
-					<h1 class="titre_site">Bienvenue !</h1>
-					<p class="description_site">Pour accéder au site et consulter les annonces en ligne, veuillez vous connecter</p>
-				</div>
 				<form method='POST'>
 					<fieldset>
 						<?php if (isset($errors['notFound'])): ?>

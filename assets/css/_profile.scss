@@ -100,3 +100,19 @@
 .titre_article_profile {
     font-weight: bold;
 }
+
+.delete_account {
+    border: solid 1px red;
+    border-radius: .5rem;
+    padding: 1rem;
+    display: block;
+    margin: auto;
+
+    a {
+        color: $text_color;
+    }
+
+    a:hover {
+        transform: scale(120%);
+    }
+}

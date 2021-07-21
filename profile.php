@@ -73,6 +73,10 @@ if($user_post->rowCount() != 0) {
 					<?php } ?>
 			</div>
 		</div>
+
+		<div class ="delete_account">
+		<a href="deleteaccount.php?pseudo=<?= $user['pseudo'] ?>" onClick="return confirm('Voulez vous vraiment supprimer votre compte ?')">Supprimer mon compte</a>
+		</div>
 		</main>
 
 <?php include ('template/footer.php'); ?>

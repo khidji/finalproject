@@ -51,7 +51,7 @@ if (isset ($_POST['article_title'], $_POST['article_content'])) {
         
         $publication = $pdo->prepare('INSERT INTO posts (content, title, user, category_id, image_url) VALUES (?,?,?,?,?)');
         $publication->execute(array($article_content, $article_title, $user['pseudo'], $article_category, $target_file));
-        $error_article = 'votre article a bien été posté' . $target_file;
+        $error_article = 'votre article a bien été posté';
     } else {
         $error_article = 'veuillez remplir les champs obligatoires (titre et contenu)';
     }

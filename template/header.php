@@ -4,6 +4,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>On galère</title>
+    <meta name="description" content="Ongalere.com est un site de petites annonces en ligne. Il est destiné aux utilisateurs rencontrant des difficultés avec l'apprentissage des langages de programmation.">
     <link rel="icon" href="assets/images/logo/logo.png" />
 
     <link rel="stylesheet" href="assets/css/style.css">

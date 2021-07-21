@@ -21,8 +21,8 @@ if(isset($_GET['pseudo']) && !empty($_GET['pseudo'])) {
         $delete_user = $delete_user->fetch();
         $suppression = $pdo->prepare('DELETE FROM users WHERE pseudo = ?');
         $suppression->execute(array($delete_id));
-        header("Location: logout.php");
-
+        unset($_SESSION['user']);
+        header('Location: login.php');
 
     } else {
        die('Erreur : le compte n\'existe pas...');

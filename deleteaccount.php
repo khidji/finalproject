@@ -21,7 +21,7 @@ if(isset($_GET['pseudo']) && !empty($_GET['pseudo'])) {
         $delete_user = $delete_user->fetch();
         $suppression = $pdo->prepare('DELETE FROM users WHERE pseudo = ?');
         $suppression->execute(array($delete_id));
-        header("Location: index.php");
+        header("Location: logout.php");
 
 
     } else {

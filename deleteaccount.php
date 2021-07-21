@@ -15,11 +15,11 @@ $user = $_SESSION['user'];
 
 if(isset($_GET['pseudo']) && !empty($_GET['pseudo'])) {
     $delete_id = htmlentities($_GET['pseudo']);
-    $delete_user = $pdo->prepare('SELECT * FROM users WHERE id = ?');
+    $delete_user = $pdo->prepare('SELECT * FROM users WHERE pseudo = ?');
     $delete_user->execute(array($delete_id));
     if($delete_user->rowCount() == 1) {
         $delete_user = $delete_user->fetch();
-        $suppression = $pdo->prepare('DELETE FROM users WHERE id = ?');
+        $suppression = $pdo->prepare('DELETE FROM users WHERE pseudo = ?');
         $suppression->execute(array($delete_id));
         header("Location: index.php");
 

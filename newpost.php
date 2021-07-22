@@ -21,14 +21,14 @@ if (isset ($_POST['article_title'], $_POST['article_content'])) {
        
     // Check file size
     if ($_FILES["fileToUpload"]["size"] > 800000) {
-        $error_file = "Sorry, your file is too large.";
+        $error_file = "Ce fichier est trop volumineux.";
         $uploadOk = 0;
     }
 
     // Allow certain file formats
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
         && $imageFileType != "gif" ) {
-        $error_file = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        $error_file = "Les fichier autorisés sont JPG, JPEG, PNG & GIF.";
         $uploadOk = 0;
     }
 
@@ -44,7 +44,7 @@ if (isset ($_POST['article_title'], $_POST['article_content'])) {
         }
     }
 
-    if (!empty($_POST['article_title']) && !empty($_POST['article_content']) && !empty($_POST['categories'])){
+    if (!empty($_POST['article_title']) && !empty($_POST['article_content']) && !empty($_POST['categories'] && !isset($error_file))){
         $article_title = htmlentities($_POST['article_title']);
         $article_content = htmlentities($_POST['article_content']);
         $article_category = htmlentities($_POST['categories']);
@@ -53,7 +53,7 @@ if (isset ($_POST['article_title'], $_POST['article_content'])) {
         $publication->execute(array($article_content, $article_title, $user['pseudo'], $article_category, $target_file));
         $error_article = 'votre article a bien été posté';
     } else {
-        $error_article = 'veuillez remplir les champs obligatoires (titre et contenu)';
+        $error_article = 'Les champs obligatoires (titre et contenu) doivent être remplis ou votre fichier n\'est pas autorisé';
     }
 }
 

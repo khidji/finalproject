@@ -39,22 +39,22 @@ if (file_exists($_FILES['fileToUpload']['tmp_name']) || is_uploaded_file($_FILES
         if($check !== false) {
             $uploadOk = 1;
         } else {
-            $error_article = "File is not an image.";
+            $error_file = "File is not an image.";
             $uploadOk = 0;
         }
         }
 
     // Check file size
     if ($_FILES["fileToUpload"]["size"] > 500000) {
-        $error_article = "Sorry, your file is too large.";
+        $error_file = "Ce fichier est trop volumineux.";
         $uploadOk = 0;
     }
 
     // Allow certain file formats
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
         && $imageFileType != "gif" ) {
-        $error_article = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
-        $uploadOk = 0;
+            $error_file = "Les fichier autorisés sont JPG, JPEG, PNG & GIF.";
+            $uploadOk = 0;
     }
 
     // Check if $uploadOk is set to 0 by an error
@@ -73,7 +73,7 @@ if (file_exists($_FILES['fileToUpload']['tmp_name']) || is_uploaded_file($_FILES
 
 
     
-if (isset ($_POST['article_title'], $_POST['article_content'])) {   
+if (isset ($_POST['article_title'], $_POST['article_content']) && !isset($error_file)) {   
     if (!empty($_POST['article_title']) && !empty($_POST['article_content'])){
         $article_title = htmlentities($_POST['article_title']);
         $article_content = htmlentities($_POST['article_content']);
@@ -113,6 +113,7 @@ if (isset ($_POST['article_title'], $_POST['article_content'])) {
             <input type="text" name="article_title" placeholder= "Titre" value = "<?= $edit_article['title']?>">
             <textarea name="article_content" placeholder="contenu de l'article"><?= $edit_article['content']?></textarea>
             <input type="file" name="fileToUpload" id="fileToUpload">
+            <?php if(isset($error_file)) {echo $error_file;} ?>
             <input class="button" type="submit" name="submit" value="envoyer l'article">
         </form>
         <?php if(isset($error_article)) {echo $error_article;} ?>

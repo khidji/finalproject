@@ -20,15 +20,15 @@ $imageFileType = strtolower(pathinfo($target_file,PATHINFO_EXTENSION));
 if (isset ($_POST['article_title'], $_POST['article_content'])) {
        
     // Check file size
-    if ($_FILES["fileToUpload"]["size"] > 500000) {
-        $error_article = "Sorry, your file is too large.";
+    if ($_FILES["fileToUpload"]["size"] > 800000) {
+        $error_file = "Sorry, your file is too large.";
         $uploadOk = 0;
     }
 
     // Allow certain file formats
     if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
         && $imageFileType != "gif" ) {
-        $error_article = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+        $error_file = "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
         $uploadOk = 0;
     }
 
@@ -75,6 +75,8 @@ if (isset ($_POST['article_title'], $_POST['article_content'])) {
             <div class="div_newpost">
                 <label for="fileToUpload">Ajouter une image</label>
                 <input type="file" name="fileToUpload" id="fileToUpload">
+                <?php if(isset($error_file)) {echo $error_file;} ?>
+
             </div>
             <div class="div_newpost">
                 <label for="categories">Choisi une catégorie</label>
